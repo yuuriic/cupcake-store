@@ -1,0 +1,915 @@
+:root {
+    --main-color: #7f4a44;
+    /* Novo azul */
+    --main-hover-color: #b97f77;
+    /* Azul claro para hover */
+    --black: #212529;
+    --bg: #f0f0f0;
+    /* Fundo cinza claro */
+    --text-color: #333333;
+    --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Roboto", sans-serif;
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 4rem 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* ====== HEADER ====== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-bottom: var(--border);
+    background: var(--bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    /* Abaixo do texto */
+    height: 2px;
+    width: 0;
+    background-color: var(--main-color);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+    /* Aparece sob o link */
+}
+
+
+.icons {
+    display: flex;
+    align-items: center;
+    /* Opcional: alinha verticalmente os ícones */
+}
+
+.icons img {
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.icons img:hover {
+    width: 40px;
+    height: 40px;
+}
+
+.btn {
+    background: var(--main-color);
+    color: #fff;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    /* Aumenta o botão levemente */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    /* Adiciona sombra */
+    color: #fff;
+}
+
+
+/* ====== MAIN CONTAINER ====== */
+.home-container {
+    background: url("./img/home-img.jpg") no-repeat center center / cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.home-container section {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.home-container .content {
+    max-width: 70rem;
+}
+
+.home-container .content h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    text-align: right;
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+.home-container .content p {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.content {
+    max-width: 60rem;
+}
+
+.content h3 {
+    color: #fff;
+    font-size: 6rem;
+}
+
+.content p {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.title {
+    font-size: 4rem;
+    color: var(--main-color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.title span {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.about .row {
+    display: flex;
+    align-items: center;
+    background-color: var(--main-hover-color);
+    gap: 1.5rem;
+}
+
+.about .row .content {
+    padding: 1rem;
+}
+
+.about .row .content h3 {
+    font-size: 3rem;
+    color: #fff;
+}
+
+
+.about .row .content p {
+    font-size: 1.6rem;
+    color: #fff;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.menu .box-container .box {
+    text-align: center;
+    border: var(--border);
+    padding: 5rem;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.menu .box-container .box img {
+    height: 10rem;
+}
+
+.menu .box-container .box h3 {
+    color: var(--main-color);
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.menu .box-container .box .price {
+    color: var(--main-color);
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+.menu .box-container .box .price span {
+    color: var(--main-color);
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    font-weight: lighter;
+}
+
+.menu .box-container .box:hover {
+    transform: translateY(-10px);
+    /* Move para cima */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra mais intensa */
+}
+
+
+.menu .box-container .box:hover>* {
+    color: var(--black);
+}
+
+.review .box-container .box {
+    border: var(--border);
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+}
+
+.review .box-container .box p {
+    font-size: 1.5rem;
+    color: #000;
+    padding: 2rem 0;
+    line-height: 1.8;
+    font-weight: lighter;
+}
+
+.review .box-container .box .user {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+}
+
+.review .box-container .box .h3 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+
+.address {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer {
+    text-align: center;
+    color: var(--main-hover-color);
+
+
+}
+
+/* Exibição do número de itens no ícone do carrinho */
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+#cart-count {
+    position: absolute;
+    top: 1px;
+    right: -10px;
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.cart-sidebar {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background: var(--bg);
+    height: 100%;
+    border-left: 2px solid;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.cart-sidebar.open {
+    display: block;
+}
+
+.cart-sidebar h2 {
+    margin-bottom: 20px;
+    color: #7f4a44;
+    font-size: 2rem;
+    /* Aumentando o tamanho da fonte */
+    text-align: center;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #444;
+    gap: 1rem;
+    /* Espaço entre título/preço e os controles */
+}
+
+#cart-items li .item-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    /* Limita a largura do título/preço */
+}
+
+#cart-items li .item-title {
+    font-size: 1.4rem;
+    color: #fff;
+    word-break: break-word;
+    margin-bottom: 0.3rem;
+}
+
+#cart-items li .item-price {
+    font-size: 1.2rem;
+    color: #d3ad7f;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Espaço entre os botões */
+    min-width: 10rem;
+    /* Garante um espaço fixo para os botões */
+}
+
+#cart-items li:last-child {
+    border-bottom: none;
+}
+
+.cart-item-controls button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-item-controls span {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    width: 2rem;
+}
+
+.cart-item-controls button:hover {
+    background-color: var(--main-hover-color);
+}
+
+.cart-sidebar button:nth-child(1) {
+    border-top: 1px solid #000;
+}
+
+.cart-sidebar button {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    background-color: #fff;
+    color: var(--black);
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-sidebar button:hover {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.cart-sidebar ul li span {
+    color: var(--main-color);
+    font-size: 1rem;
+}
+
+.remove-button {
+    width: 2rem;
+    /* Ajuste a largura conforme desejado */
+    height: 2rem;
+    /* Ajuste a altura conforme desejado */
+    font-size: 1.2rem;
+    /* Ajusta o tamanho do ícone */
+    background-color: transparent;
+    /* Deixe o fundo transparente */
+    color: var(--main-color);
+    /* Ajuste a cor do ícone */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    /* Remove o padding para ajustar ao tamanho */
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Contêiner da barra de pesquisa */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Ícone de pesquisa */
+#search-icon {
+    cursor: pointer;
+}
+
+/* Campo de entrada de pesquisa */
+#search-input {
+    display: none;
+    /* Oculto por padrão */
+    width: 200px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 1.2rem;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+#suggestions {
+    position: absolute;
+    background: white;
+    width: 100%;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+#suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions div:hover {
+    background: #f0f0f0;
+}
+
+/* Estilo para a área do total no carrinho */
+.cart-summary {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--main-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.cart-sidebar .cart-summary p {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: lighter;
+    margin-top: 1rem;
+}
+
+.cart-sidebar .cart-item-controls span {
+    color: var(--main-color);
+    font-size: 1rem;
+}
+
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-sidebar .cart-total p {
+    color: var(--main-color);
+}
+
+#total-price {
+    color: var(--main-color);
+}
+
+/* ====== MODAL STYLES ====== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1000;
+}
+
+
+.modal-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: var(--main-color);
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.modal-content button {
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: var(--main-color);
+}
+
+/* Estilos para o modal */
+.modal-more {
+    display: none;
+    /* O modal começa escondido */
+    position: fixed;
+    border: 1px solid var(--border);
+    z-index: 1;
+    /* Fica sobre o conteúdo da página */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Permite rolar o conteúdo se necessário */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fundo semitransparente */
+}
+
+/* Conteúdo do modal */
+.modal-content-more {
+    background-color: var(--main-hover-color);
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 10px solid var(--border);
+    width: 80%;
+    /* Pode ajustar o tamanho */
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+/* Estilos para o título do modal */
+#modal-title {
+    text-align: center;
+    /* Centraliza o texto */
+    font-size: 24px;
+    /* Tamanho da fonte do título */
+    margin: 0;
+    /* Remove a margem, caso haja */
+    padding: 15px 0;
+    /* Adiciona um pouco de espaçamento acima e abaixo */
+    color: #fff;
+}
+
+#modal-description {
+    padding: 20px 0;
+    /* Adiciona um pouco de espaçamento acima e abaixo */
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal .close:hover {
+    color: black;
+}
+
+
+
+/* Botão de fechar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para o botão "Saber Mais" */
+.know-more-btn {
+    display: inline-flex;
+    /* Faz o botão ficar no formato inline, ao lado da seta */
+    align-items: center;
+    /* Alinha o texto e a seta verticalmente */
+    color: var(--main-color);
+    /* Cor do texto branca */
+    font-size: 14px;
+    /* Tamanho da fonte */
+    background-color: transparent;
+    /* Sem fundo */
+    border: none;
+    /* Remove a borda */
+    cursor: pointer;
+    /* Cursor em forma de mãozinha */
+    text-decoration: none;
+    /* Remove qualquer sublinhado no link (caso seja um link) */
+
+}
+
+/* Seta à direita */
+.know-more-btn::after {
+    content: '→';
+    /* A seta */
+    margin-left: 5px;
+    /* Espaço entre o texto e a seta */
+    font-size: 16px;
+    /* Tamanho da seta */
+}
+
+/* Posiciona o botão no canto do cupcake */
+.box {
+    position: relative;
+    /* Necessário para posicionar o botão no canto */
+}
+
+.know-more-btn {
+    position: absolute;
+    bottom: 10px;
+    /* Distância do fundo do cupcake */
+    right: 10px;
+    /* Distância da direita do cupcake */
+}
+
+
+#logout-btn {
+    display: none;
+}
+
+
+/* Estilo para o modal */
+.modal-auth {
+    display: none;
+    /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Garante que o modal fique sobre outros elementos */
+}
+
+.modal-content-auth {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    /* Largura máxima do modal */
+    text-align: center;
+    position: relative;
+    /* Necessário para posicionar o botão de fechar */
+    z-index: 1001;
+    /* Garante que o conteúdo do modal fique sobre o fundo */
+}
+
+.modal-content-auth input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content-auth button {
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content-auth button:hover {
+    background-color: var(--main-color);
+}
+
+.modal-content-auth p {
+    font-size: 14px;
+}
+
+.modal-content-auth a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+/* Corrigido para a classe .close-auth */
+.modal-content-auth .close-auth {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-content-auth .close-auth:hover {
+    color: var(--main-hover-color);
+}
+
+/* Modal */
+.modal-history {
+    display: none;
+    /* Inicialmente invisível */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    z-index: 9999;
+    /* Garantir que o modal fique acima de outros conteúdos */
+    transition: opacity 0.3s ease;
+    /* Transição suave para aparecer/desaparecer */
+}
+
+/* Modal visível quando ativo */
+.modal-history.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Conteúdo do modal */
+.modal-content-history {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10% auto;
+    width: 90%;
+    /* Aumentei a largura para dar mais espaço */
+    max-width: 800px;
+    /* Limita o tamanho máximo */
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para destacar o modal */
+}
+
+/* Botão de fechar (X) */
+.close-history {
+    color: #888;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-history:hover,
+.close-history:focus {
+    color: #f00;
+    /* Altera a cor para vermelho ao passar o mouse */
+    text-decoration: none;
+}
+
+/* Lista de pedidos */
+#order-history-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Itens da lista de pedidos */
+#order-history-list li {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 5px;
+    /* Cantos arredondados nos itens */
+    transition: background-color 0.3s ease;
+    font-size: 1.3rem;
+}
+
+#order-history-list li:hover {
+    background-color: #f0f0f0;
+    /* Efeito de hover para destacar o item */
+}
+
+/* Estilo para os detalhes dos itens */
+#order-history-list li span {
+    font-size: 1.5rem;
+    color: #000;
+    /* Cor de texto para detalhes */
+}
+
+/* Texto de título */
+h2 {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

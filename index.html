@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;1,300;1,700&display=swap"
+        rel="stylesheet">
+    <title>Cupcake Gourmet</title>
+</head>
+
+<body>
+    <header class="header">
+        <section>
+            <a href="#" class="logo">
+                <img src="img/logo.png" alt="logo">
+            </a>
+
+            <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#about">Sobre</a>
+                <a href="#menu">Menu</a>
+                <a href="#review">Avaliações</a>
+                <a href="#address">Endereço</a>
+                <a href="javascript:void(0);" id="login-link">Login</a>
+                <a href="javascript:void(0);" id="register-link">Registrar</a>
+                <!-- Adicionando o botão de logout -->
+                <a href="javascript:void(0);" id="logout-btn">Logout</a>
+                <!-- Inicialmente escondido -->
+
+            </nav>
+
+            <div class="icons">
+                <div class="search-container">
+                    <img id="search-icon" src="https://img.icons8.com/ios-filled/25/000000/search--v1.png"
+                        alt="search" />
+                    <input type="text" id="search-input" placeholder="Buscar cupcake..." oninput="searchItems()" />
+                    <div id="suggestions"></div>
+                </div>
+                <div id="cart-icon" onclick="toggleCart()">
+                    <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/000000/shopping-cart--v1.png"
+                        alt="shopping-cart" />
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- Modal para Login e Registro -->
+    <div id="modal-auth" class="modal-auth">
+        <div class="modal-content-auth">
+            <span class="close-auth" id="close-modal-auth">&times;</span>
+            <h2 id="modal-title-auth">Login</h2>
+
+            <!-- Formulário de Login -->
+            <div id="login-form">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" placeholder="Digite seu email" required>
+
+                <label for="login-password">Senha:</label>
+                <input type="password" id="login-password" placeholder="Digite sua senha" required>
+
+                <button id="login-btn" class="btn">Entrar</button>
+
+                <p>Não tem uma conta? <a href="javascript:void(0);" id="go-to-register">Registrar-se</a></p>
+            </div>
+
+            <!-- Formulário de Registro -->
+            <div id="register-form" style="display: none;">
+                <label for="register-name">Nome:</label>
+                <input type="text" id="register-name" placeholder="Digite seu nome" required>
+
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" placeholder="Digite seu email" required>
+
+                <label for="register-password">Senha:</label>
+                <input type="password" id="register-password" placeholder="Digite sua senha" required>
+
+                <button id="register-btn" class="btn">Registrar</button>
+
+                <p>Já tem uma conta? <a href="javascript:void(0);" id="go-to-login">Entrar</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-history-modal" class="modal-history">
+        <div class="modal-content-history">
+            <span class="close-history" id="close-order-history">&times;</span>
+            <h2>Histórico de Pedidos</h2>
+            <ul id="order-history-list"></ul>
+        </div>
+    </div>
+    
+    
+    <!-- Barra lateral do carrinho -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <h2>Carrinho</h2>
+        <ul id="cart-items"></ul>
+        <div class="cart-total">
+            <p>Total: <span id="total-price">R$0,00</span></p>
+        </div>
+        <button onclick="openModal()">Finalizar Pedido</button>
+        <button id="order-history-btn" class="btn">Histórico de Pedidos</button>
+        <button onclick="closeCart()">Fechar Carrinho</button>
+
+    </div>
+
+    <div class="home-container">
+        <section id="home">
+            <div class="content">
+                <h3>Doce como a vida deve ser: cupcakes que derretem o coração e encantam o paladar!</h3>
+                <p>Cupcake de todos o sabores, cores e intensidades, para você se deliciar!</p>
+                <a href="#menu" class="btn">Pegue o seu agora!</a>
+            </div>
+
+        </section>
+    </div>
+
+    <section class="about" id="about">
+        <h2 class="title">Sobre</h2>
+        <div class="row">
+            <div class="container-image">
+                <img src="./img/about-img.png" alt="sobre-nos">
+            </div>
+            <div class="content">
+                <h3>Mais que um cupcake!</h3>
+                <p>Nossos cupcakes são especiais porque cada detalhe é cuidadosamente pensado para proporcionar uma experiência única e inesquecível. Usamos ingredientes frescos e de altíssima qualidade, garantindo um sabor autêntico e uma textura impecável. Nossa receita é perfeitamente equilibrada para entregar o doce ideal, sem excessos. E para completar, nossas decorações são feitas com criatividade e carinho, trazendo charme e personalidade a cada unidade. Mais do que um doce, nossos cupcakes são uma celebração do sabor e um presente para os sentidos!</p>
+                <a href="#" class="btn">Saiba mais!</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <h2 class="title">Cardápio</h2>
+        <div class="box-container">
+            <div class="box" data-name="Cupcake de Morango"
+                data-description="Delicioso cupcake de morango com cobertura cremosa de chantilly de morango. Ideal para quem ama frutas!"
+                data-allergens="Com lactose">
+                <img src="./img/menu-1.png" alt="item-1">
+                <h3>Cupcake de Morango</h3>
+                <div class="price">R$10,99</div>
+                <a href="#" class="btn">Adicione ao Carrinho</a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+            </div>
+
+            <div class="box" data-name="Cupcake de Chocolate com Café"
+                data-description="Delicioso cupcake de chocolate com café com cobertura cremosa de cappuccino. Ideal para quem ama cafeína!"
+                data-allergens="Sem lactose">
+                <img src="./img/menu-2.png" alt="item-1">
+                <h3>Cupcake de Chocolate com Café</h3>
+                <div class="price">R$15,99</div>
+                <a href="#" class="btn">Adicione ao Carrinho </a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+
+            </div>
+
+            <div class="box" data-name="Cupcake de Cereja"
+                data-description="Delicioso cupcake de Cereja com cobertura cremosa de baunilha. Ideal para quem não quer se arriscar no novo!"
+                data-allergens="Sem restrições">
+                <img src="./img/menu-3.png" alt="item-1">
+                <h3>Cupcake de Cereja</h3>
+                <div class="price">R$18,99</div>
+                <a href="#" class="btn">Adicione ao Carrinho</a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+            </div>
+
+            <div class="box" data-name="Cupcake Amora"
+                data-description="Delicioso cupcake de amora com cobertura e uma deliciosa calda de amora. Ideal para quem ama o diferente!"
+                data-allergens="Sem glúten">
+                <img src="./img/menu-4.png" alt="item-1">
+                <h3>Cupcake Amora</h3>
+                <div class="price">R$10,99</div>
+                <a href="#" class="btn">Adicione ao Carrinho</a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+            </div>
+
+            <div class="box" data-name="Cupcake Chocolate Branco"
+                data-description="Delicioso cupcake de Chocolate Branco com cobertura cremosa e uma decoração elegante. Ideal para quem quer impressionar!"
+                data-allergens="Sem restrições">
+                <img src="./img/menu-5.png" alt="item-1">
+                <h3>Cupcake Chocolate Branco</h3>
+                <div class="price">R$15,99 <span>R$20,99</span></div>
+                <a href="#" class="btn">Adicione ao Carrinho</a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+            </div>
+
+            <div class="box" data-name="Cupcake de Nozes"
+                data-description="Delicioso cupcake de Nozes com cobertura cremosa de amendoim e pedaços de nozes. Ideal para quem não quer abrir mão da dieta!"
+                data-allergens="Nozes">
+                <img src="./img/menu-6.png" alt="item-1">
+                <h3>Cupcake de Nozes</h3>
+                <div class="price">R$17,99 <span>R$20,99</span></div>
+                <a href="#" class="btn">Adicione ao Carrinho</a>
+                <button class="know-more-btn">Saber mais</button> <!-- Botão Saber Mais -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para mostrar informações detalhadas -->
+    <div id="modal-more" class="modal-more">
+        <div class="modal-content-more">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Título</h2>
+            <p id="modal-description">Descrição do cupcake...</p>
+            <p id="modal-allergens">Alergênicos: ...</p>
+        </div>
+    </div>
+
+    <section class="review" id="review">
+        <h2 class="title">Clientes</h2>
+        <div class="box-container">
+            <div class="box">
+                <img src="./img/quote-img.png" alt="comentario">
+                <p> Um dos melhores Cupcake que já comi, podem comprar sem medo. Excelente!</p>
+                <img src="./img/pic-1.png" alt="foto-cliente" class="user">
+                <h3>João Silva</h3>
+                <div class="stars">
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="./img/quote-img.png" alt="comentario">
+                <p>Meu cupcake favorito! Atendimento excelente!</p>
+                <img src="./img/pic-2.png" alt="foto-cliente" class="user">
+                <h3>Maria Luisa</h3>
+                <div class="stars">
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                        <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star--v1.png"
+                        alt="star--v1" />
+                    <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/7f4a44/star-half-empty.png"
+                        alt="star-half-empty" />
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="address" id="address">
+        <h2 class="title">Localização</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117243.28837706614!2d-51.24816543553262!3d-23.32110036192944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb435a57af586d%3A0x23ac11a5c614f971!2sLondrina%2C%20PR!5e0!3m2!1spt-BR!2sbr!4v1732928157476!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Modal de Finalizar Pedido -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-order-modal" class="close">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <label for="delivery-method">Escolha a entrega:</label>
+            <select id="delivery-method" required>
+                <option value="">Selecione</option>
+                <option value="retirar">Retirar na loja</option>
+                <option value="entrega">Entrega</option>
+            </select>
+
+            <div id="delivery-fields" style="display: none;">
+                <label for="address-form">Endereço:</label>
+                <input type="text" id="address-form" placeholder="Digite seu endereço">
+
+                <label for="number">Número:</label>
+                <input type="text" id="number" placeholder="Número:">
+
+                <label for="neighborhood">Bairro:</label>
+                <input type="text" id="neighborhood" placeholder="Digite seu bairro">
+
+                <label for="phone">Telefone/Celular:</label>
+                <input type="text" id="phone" placeholder="Telefone/Celular:">
+
+                <label for="city">Cidade:</label>
+                <select id="city">
+                    <option value="">Selecione sua cidade</option>
+                    <option value="Londrina">Londrina</option>
+                </select>
+
+
+            </div>
+
+            <button id="finalize-order-btn">Finalizar Pedido</button>
+        </div>
+    </div>
+
+
+    <section class="footer">
+        <div class="share">
+            <p>Site criado por Yuri - Projeto Integrador Transdiciplinar - Unifran 2024
+        </div>
+    </section>
+
+    <script src="script.js" defer></script>
+
+
+
+</body>
+
+</html>
